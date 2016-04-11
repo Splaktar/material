@@ -110,17 +110,20 @@ angular.module('myApp', ['ngMaterial'])
 });
 </hljs>
 
-Sometimes it is easier to extend an existing color palette to overwrite a few
-colors than define a whole new one. You can use `$mdThemingProvider.extendPalette` 
+### Extending Existing Palettes
+
+Sometimes it is easier to extend an existing color palette to change a few properties
+than to define a whole new palette. You can use `$mdThemingProvider.extendPalette` 
 to quickly extend an existing color palette.
 
 <hljs lang="js">
 angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
 
-  // Extend the red theme with a few different colors
+  // Extend the red theme with a different color and make the text black instead of white
   var neonRedMap = $mdThemingProvider.extendPalette('red', {
-    '500': 'ff0000'
+    '500': '#ff0000',
+    'contrastDefaultColor': 'dark'
   });
 
   // Register the new color palette map with the name `neonRed`
@@ -128,7 +131,7 @@ angular.module('myApp', ['ngMaterial'])
 
   // Use that theme for the primary intentions
   $mdThemingProvider.theme('default')
-    .primaryPalette('neonRed')
+    .primaryPalette('neonRed');
 
 });
 </hljs>
